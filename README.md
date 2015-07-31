@@ -1,4 +1,10 @@
 # RU-Studying-3.0
 
-NEW AND IMPROVED WEB APP!
-========================
+Now a webapp!
+================
+
+https://ru-studying.herokuapp.com/
+
+Built from Python and Flask.
+
+Flask is fantastic.
