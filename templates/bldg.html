@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Pick building{% endblock %}
 {% block content %}
-	<h3>{{ campus }}</h3>
+	<center><h2>{{ campus }}</h2></center>
+	<div class = "col-md-3">
+		<h2 style = "float:right">Pick your building</h2>
+	</div>
+	<div class = "col-md-6">
 	{% for bldg in bldgs %}
-		<h4><a href = "/{{ campus }}/{{ bldg }}">{{ bldg }}</a></h4>
+		<center><h3><a href = "/{{ campus }}/{{ bldg }}">{{ bldg }}</a></h3></center>
 	{% endfor %}
+	</div>
+	<div class = "col-md-3">
+	</div>
 {% endblock %}
