@@ -1,9 +1,8 @@
 #RU Studying
 
 from flask import Flask, render_template, redirect, url_for, request, session, flash, g
-#from timeproc import *
 from showtimes import *
-from parse import *
+from checktime import *
 import json
 import pytz 
 from datetime import datetime as dt
@@ -121,10 +120,16 @@ def showtimes(campus, bldg):
 	#today = tz.time.strftime("%a")
 	#currenttime = tz.time.strftime("%I:%M")
 	
-	insession, empty = checktime(campus, bldg)
+	rooms = getrooms(campus, bldg)
+	openrooms = []
+
+	for i in range(len(rooms)):
+		if True in rooms[i]:
+			openrooms.append(rooms[i][0])
+	
 	#processtime(campus, bldg, today, currenttime)	
 
-	return render_template('showtimes.html', insession = insession, empty = empty, hour = hour, minute = minute, today = str(today), bldg = bldg, campus = campus)
+	return render_template('showtimes.html', openrooms = openrooms, hour = hour, minute = minute, today = str(today), bldg = bldg, campus = campus)
 
 if __name__ == '__main__':
 	app.run(debug = True)
