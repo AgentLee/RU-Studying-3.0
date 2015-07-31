@@ -1,11 +1,27 @@
 {% extends "base.html" %}
 {% block title %}Open Rooms{% endblock %}
 {% block content %}
-	<h3>{{ campus }}<h3>
-	<h4>{{ bldg }}</h4>
-	<h5>{{ today }} {{ hour }}:{{ minute }}</h5>
-	<h2>GO STUDY IN HERE NOW!</h2>
-	{% for room in empty %}
-		<h6>{{ room }}</h6>
-	{% endfor %}
+	<center><h2 style = "margin-top: 100px">{{ campus }} | {{ bldg }}</h2></center>
+	<div class = "col-md-3"> 
+		<h2 style = "float:right">Much rooms</h2>
+	</div>
+	<div class = "col-md-6">
+		<h2><center>GO STUDY IN HERE NOW!</center></h2>
+
+		<table class="table">
+			<tbody>
+				{% for room in empty %}
+					<tr>
+						<td><center>{{ room }}</center></td>
+					<tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		
+	</div>
+	<div class = "col-md-3">
+	</div>
+
+	
 {% endblock %}

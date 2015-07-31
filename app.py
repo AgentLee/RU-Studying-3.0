@@ -15,7 +15,22 @@ tz = pytz.timezone('America/New_York')
 
 @app.route('/')
 def home():
-	return render_template('index.html')
+	currenttime = datetime.datetime.now(tz).time()
+
+	if currenttime.hour > 12:
+		hour = currenttime.hour - 12
+	elif currenttime.hour == 00:
+		hour = 12
+	else:
+		hour = currenttime.hour
+
+	if currenttime.minute < 10:
+		minute = '0'
+		minute += str(currenttime.minute)
+	else:
+		minute = str(currenttime.minute)
+
+	return render_template('index.html', hour = hour, minute = minute)
 
 # reads file with all the buildings for each campus and returns a list
 def getbldgs(campus):
@@ -53,7 +68,22 @@ def showbldgs(campus):
 	else:
 		campus = 'DOUGLAS/COOK'
 
-	return render_template('bldg.html', bldgs = bldgs, campus = campus)
+	currenttime = datetime.datetime.now(tz).time()
+
+	if currenttime.hour > 12:
+		hour = currenttime.hour - 12
+	elif currenttime.hour == 00:
+		hour = 12
+	else:
+		hour = currenttime.hour
+
+	if currenttime.minute < 10:
+		minute = '0'
+		minute += str(currenttime.minute)
+	else:
+		minute = str(currenttime.minute)
+
+	return render_template('bldg.html', hour = hour, minute = minute, bldgs = bldgs, campus = campus)
 
 def dayconverter(today):
 	if today == 0:
@@ -78,7 +108,10 @@ def showtimes(campus, bldg):
 
 	if currenttime.hour > 12:
 		hour = currenttime.hour - 12
-		hour = str(hour)
+	elif currenttime.hour == 00:
+		hour = 12
+	else:
+		hour = currenttime.hour
 
 	if currenttime.minute < 10:
 		minute = '0'
