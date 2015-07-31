@@ -3,8 +3,6 @@
 {% block content %}
 	<center><h2>{{ campus }} | {{ bldg }}</h2></center>
 	<div class = "col-md-3"> 
-		<h2 style="text-align:right">Much rooms</h2>
-		<h3 style="text-align:right"><small>If you look to your right, these classrooms are open.<br>These rooms have classes today. But since they show up, they DON'T have classes at this very moment.<br>Future versions will tell you the next class time.</small></h3>
 	</div>
 	<div class = "col-md-6">
 		<h2><center>GO STUDY IN HERE NOW!</center></h2>
@@ -13,7 +11,7 @@
 				{% for room in openrooms %}
 					<tr>
 						<td><center>{{ room }}</center></td>
-					<tr>
+					</tr>
 				{% endfor %}
 			</tbody>
 		</table>
@@ -23,5 +21,17 @@
 	<div class = "col-md-3">
 	</div>
 
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	
+	<div class = "col-md-12">
+		<p style = "text-align: center">
+			RU Studying finds classrooms that have or had classes in them throughout the day based on the current time. If a classroom is shown, then a class already has taken place or will take place. If a classroom is not shown, then the were no classes scheduled for that room for that day and should be open for studying.
+		</p> 
+	</div>
+
 {% endblock %}
