@@ -3,7 +3,7 @@
 {% block content %}
 	<h3>{{ campus }}<h3>
 	<h4>{{ bldg }}</h4>
-	<h5>{{ today }} {{ currenttime }}</h5>
+	<h5>{{ today }} {{ hour }}:{{ minute }}</h5>
 	<h2>GO STUDY IN HERE NOW!</h2>
 	{% for room in empty %}
 		<h6>{{ room }}</h6>

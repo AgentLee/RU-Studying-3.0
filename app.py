@@ -55,17 +55,38 @@ def showbldgs(campus):
 
 	return render_template('bldg.html', bldgs = bldgs, campus = campus)
 
+def dayconverter(today):
+	if today == 0:
+		return 'Monday'
+	elif today == 1:
+		return 'Tuesday'
+	elif today == 2:
+		return 'Wednesday'
+	elif today == 3:
+		return 'Thursday'
+	elif today == 4:
+		return 'Friday'
+	elif today == 5:
+		return 'Saturday'
+	else:
+		return 'Sunday'
 
 @app.route('/<campus>/<bldg>')
 def showtimes(campus, bldg):
-	today = tz.time.strftime("%a")
+	today = dayconverter(datetime.datetime.now(tz).weekday())
+	currenttime = datetime.datetime.now(tz).time()
 
-	currenttime = tz.time.strftime("%I:%M")
+	if currenttime.hour > 12:
+		hour = currenttime.hour - 12
+
+	minute = currenttime.minute
+	#today = tz.time.strftime("%a")
+	#currenttime = tz.time.strftime("%I:%M")
 	
 	insession, empty = checktime(campus, bldg)
 	#processtime(campus, bldg, today, currenttime)	
 
-	return render_template('showtimes.html', insession = insession, empty = empty, currenttime = str(currenttime), today = str(today), bldg = bldg, campus = campus)
+	return render_template('showtimes.html', insession = insession, empty = empty, hour = hour, minute = minute, today = str(today), bldg = bldg, campus = campus)
 
 if __name__ == '__main__':
 	app.run(debug = True)

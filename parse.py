@@ -7,6 +7,8 @@ import os
 
 #str(time.strfttime("%a"))
 
+tz = pytz.timezone('America/New_York')
+
 def addtofile(day, campus, bldg, room, start, end, pm):
 	if campus is None or bldg is None or room is None or start is None or end is None:
 		return
@@ -173,7 +175,7 @@ def checktime(campus, bldg):
 						
 					start = datetime.time(int(start1), int(start2), 0)
 					end = datetime.time(int(end1), int(end2), 0)
-					rn = datetime.datetime.now().time()
+					rn = datetime.datetime.now(tz).time()
 
 					room = parsepath(path)
 					#print room, str(start), str(end), str(rn)
