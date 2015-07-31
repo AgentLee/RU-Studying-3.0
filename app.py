@@ -5,9 +5,13 @@ from flask import Flask, render_template, redirect, url_for, request, session, f
 from showtimes import *
 from parse import *
 import json
+import pytz 
+from datetime import datetime as dt
 import time
 
 app = Flask(__name__)
+
+tz = pytz.timezone('America/New_York')
 
 @app.route('/')
 def home():
@@ -54,9 +58,9 @@ def showbldgs(campus):
 
 @app.route('/<campus>/<bldg>')
 def showtimes(campus, bldg):
-	today = time.strftime("%a")
+	today = tz.time.strftime("%a")
 
-	currenttime = time.strftime("%I:%M")
+	currenttime = tz.time.strftime("%I:%M")
 	
 	insession, empty = checktime(campus, bldg)
 	#processtime(campus, bldg, today, currenttime)	
