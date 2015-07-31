@@ -5,6 +5,6 @@ Now a webapp!
 
 https://ru-studying.herokuapp.com/
 
-Built from Python and Flask.
+Built from the foundations from https://github.com/AgentLee/RU_Studying but now with Flask!
 
 Flask is fantastic.
