@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Open Rooms{% endblock %}
+{% block content %}
+	<h3>{{ campus }}<h3>
+	<h4>{{ bldg }}</h4>
+	<h5>{{ today }} {{ currenttime }}</h5>
+	<h2>GO STUDY IN HERE NOW!</h2>
+	{% for room in empty %}
+		<h6>{{ room }}</h6>
+	{% endfor %}
+{% endblock %}
