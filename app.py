@@ -78,8 +78,13 @@ def showtimes(campus, bldg):
 
 	if currenttime.hour > 12:
 		hour = currenttime.hour - 12
+		hour = str(hour)
 
-	minute = currenttime.minute
+	if currenttime.minute < 10:
+		minute = '0'
+		minute += str(currenttime.minute)
+	else:
+		minute = str(currenttime.minute)
 	#today = tz.time.strftime("%a")
 	#currenttime = tz.time.strftime("%I:%M")
 	
